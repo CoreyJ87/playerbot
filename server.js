@@ -73,6 +73,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
                   'imdb': tmdb_id
                 })) {
                 sayObj.text += "\n`" + orig_title + "`is already in the download list. Click red button to remove";
+                sayObj.response_type = "in_channel";
                 sayObj.attachments[attachmentNum].actions.push({
                   name: "dupe",
                   text: orig_title,
