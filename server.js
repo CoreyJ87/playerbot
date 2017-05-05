@@ -72,7 +72,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
               if (_.isMatch(movies[x].info, {
                   'imdb': tmdb_id
                 })) {
-                sayObj.text += "\n~`" + orig_title + "`~ with IMDB ID: ~`" + tmdb_id + "`~ is already in the download list. Click red button to remove";
+                sayObj.text += "\n`" + orig_title + "`is already in the download list. Click red button to remove";
                 sayObj.attachments[attachmentNum].actions.push({
                   name: "dupe",
                   text: orig_title,
