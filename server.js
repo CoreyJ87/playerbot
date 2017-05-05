@@ -183,6 +183,7 @@ slapp.action('yesno_callback', (msg, value) => {
     msg.respond(msg.body.response_url, {
       text: "Okay so you don't want to add anything. I see",
       "delete_original": true,
+      "response_type": "in_channel"
     });
   }
 });
