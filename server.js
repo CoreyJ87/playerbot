@@ -19,19 +19,14 @@ var slapp = Slapp({
 
 slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   var sayObj = {
-    "response_type": "ephemeral",
     "text": "*You searched for `" + parameter + "`*",
     "attachments": [
       {
-        "text": "",
-        "fallback": "Uhhh yeah...",
-        "callback_id": "yesno_callback",
+        "callback_id": "search_callback",
         "actions": []
       },
       {
-        "text": "",
-        "fallback": "Uhhh yeah...",
-        "callback_id": "yesno_callback",
+        "callback_id": "search_callback",
         "actions": [{
           name: "new",
           text: "Cancel",
@@ -195,10 +190,9 @@ slapp.action('yesno_callback', (msg, value) => {
   }
 });
 
-var HELP_TEXT = "To search for a movie use: `@couchbot search MOVIENAME`\n";
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say(HELP_TEXT)
+  msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n")
 })
 
 // Catch-all for any other responses not handled above
