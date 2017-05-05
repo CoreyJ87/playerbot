@@ -22,10 +22,14 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
     "text": "*You searched for `" + parameter + "`*",
     "attachments": [
       {
+        "text": "",
+        "fallback": "Uhhh yeah...",
         "callback_id": "search_callback",
         "actions": []
       },
       {
+        "text": "",
+        "fallback": "Uhhh yeah...",
         "callback_id": "search_callback",
         "actions": [{
           name: "new",
@@ -107,7 +111,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
 
 
 
-slapp.action('yesno_callback', (msg, value) => {
+slapp.action('search_callback', (msg, value) => {
   var cpapi = new CpApi;
   var cleanParameters = value.split("|");
   var title = cleanParameters[0];
@@ -192,7 +196,7 @@ slapp.action('yesno_callback', (msg, value) => {
 
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n")
+  msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
 })
 
 // Catch-all for any other responses not handled above
