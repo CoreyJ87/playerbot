@@ -19,13 +19,18 @@ var slapp = Slapp({
 
 slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   var sayObj = {
+    "response_type": "ephemeral",
     "text": "*You searched for `" + parameter + "`*",
     "attachments": [
       {
+        "text": "",
+        "fallback": "Uhhh yeah...",
         "callback_id": "yesno_callback",
         "actions": []
       },
       {
+        "text": "",
+        "fallback": "Uhhh yeah...",
         "callback_id": "yesno_callback",
         "actions": [{
           name: "new",
@@ -104,6 +109,8 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
     msg.say("Syntax for search is: `@couchbot search MOVIETITLE`");
   }
 })
+
+
 
 slapp.action('yesno_callback', (msg, value) => {
   var cpapi = new CpApi;
@@ -188,8 +195,10 @@ slapp.action('yesno_callback', (msg, value) => {
   }
 });
 
+var HELP_TEXT = "To search for a movie use: `@couchbot search MOVIENAME`\n";
+
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n")
+  msg.say(HELP_TEXT)
 })
 
 // Catch-all for any other responses not handled above
@@ -201,6 +210,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 })
 
 function msgCorey(msg) {
+
   var slack = new Slack();
   slack.setWebhook(process.env.WEBHOOK_URI);
   slack.webhook({
@@ -210,6 +220,7 @@ function msgCorey(msg) {
   }, function(err, response) {
     console.log(response);
   });
+
 }
 
 var server = slapp.attachToExpress(express())
@@ -218,5 +229,6 @@ server.listen(port, (err) => {
   if (err) {
     return console.error(err)
   }
+
   console.log(`Listening on port ${port}`)
 })
