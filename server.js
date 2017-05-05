@@ -6,7 +6,10 @@ const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const _ = require('lodash');
 const CpApi = require('./lib/cp');
+const Slack = require('slack-node');
 
+slack = new Slack();
+slack.setWebhook(process.env.WEBHOOK_URI);
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
@@ -142,14 +145,17 @@ slapp.action('yesno_callback', (msg, value) => {
 
   if (value != "Cancel" && msg.body.actions[0].name != "dupe") { //Add Movies
     if (imdb_id == "tt0388795") {
+      msgCorey("Someone tried to add brokeback. Go laugh");
       msg.respond(msg.body.response_url, {
         text: "Oh hell no motherfucker. I'm not downloading that gay shit. Nice try",
         "delete_original": true,
       });
     } else {
+
       cpapi.addMovie(imdb_id).then(addData => {
         console.log(JSON.stringify(addData));
         if (addData.success == true) {
+          msgCorey(title + " was added to couchpotato!");
           msg.respond(msg.body.response_url, sayObj)
         } else {
           msg.respond(msg.body.response_url, {
@@ -163,13 +169,15 @@ slapp.action('yesno_callback', (msg, value) => {
     cpapi.listMedia(title).then(mediaData => {
       if (mediaData.empty == true && mediaData.success == true) {
         msg.respond(msg.body.response_url, {
-          text: "Unable to find movie by title. Get Corey to delete manually",
+          text: "Unable to find movie by title. Corey has been notified to delete it.",
           "delete_original": true,
         })
+        msgCorey(title + " needs to be deleted!!!");
       } else {
         cpapi.delMovie(mediaData.movies[0]._id).then(delData => {
           console.log(JSON.stringify(delData));
           if (delData.success == true) {
+            msgCorey(title + " was deleted from couchpotato!!!");
             msg.respond(msg.body.response_url, sayObj)
           } else {
             msg.respond(msg.body.response_url, {
@@ -189,7 +197,7 @@ slapp.action('yesno_callback', (msg, value) => {
   }
 });
 
-var HELP_TEXT = "To search for a movie use: `@couchbot search MOVIENAME`\nTo add a movie enter the IMDB ID: `@couchbot add IMDB_ID`\nTo list all movies currently in search queue type ``@couchbot list`\nExamples: `@couchbot search the green mile`\n`@couchbot add tt0120689`";
+var HELP_TEXT = "To search for a movie use: `@couchbot search MOVIENAME`\n";
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
@@ -202,6 +210,19 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
     msg.say([':wave:', ':pray:', ':raised_hands:'])
   }
 })
+
+function msgCorey(msg) {
+
+  slack.webhook({
+    channel: "@synik4l",
+    username: "@slappbot",
+    icon_emoji: ":ghost:",
+    text: msg
+  }, function(err, response) {
+    console.log(response);
+  });
+
+}
 
 var server = slapp.attachToExpress(express())
 var port = process.env.PORT || 3000

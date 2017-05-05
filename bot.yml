@@ -18,3 +18,8 @@ config:
     info: Couchpotato Api Key
     type: secret
     default: blah
+    - name: WEBHOOK_URI
+      friendly_name: Webhook URI
+      info: Webhook URI
+      type: secret
+      default: blah  
