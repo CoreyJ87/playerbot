@@ -8,8 +8,6 @@ const _ = require('lodash');
 const CpApi = require('./lib/cp');
 const Slack = require('slack-node');
 
-var slack = new Slack();
-slack.setWebhook(process.env.WEBHOOK_URI);
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
@@ -213,11 +211,12 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 function msgCorey(msg) {
 
+  var slack = new Slack();
+  slack.setWebhook(process.env.WEBHOOK_URI);
   slack.webhook({
     channel: "@synik4l",
-    username: "@slappbot",
-    icon_emoji: ":ghost:",
-    text: msg
+    username: "slappbot",
+    text: msg,
   }, function(err, response) {
     console.log(response);
   });
