@@ -18,6 +18,7 @@ var slapp = Slapp({
 
 slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   var sayObj = {
+    "response_type": "ephemeral",
     "text": "*You searched for `" + parameter + "`*",
     "attachments": [
       {
@@ -73,7 +74,6 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
                   'imdb': tmdb_id
                 })) {
                 sayObj.text += "\n`" + orig_title + "`is already in the download list. Click red button to remove";
-                sayObj.response_type = "ephemeral";
                 sayObj.attachments[attachmentNum].actions.push({
                   name: "dupe",
                   text: orig_title,
