@@ -8,7 +8,7 @@ const _ = require('lodash');
 const CpApi = require('./lib/cp');
 const Slack = require('slack-node');
 
-slack = new Slack();
+var slack = new Slack();
 slack.setWebhook(process.env.WEBHOOK_URI);
 
 var slapp = Slapp({
