@@ -1,0 +1,20 @@
+name: slappbot
+description: ☝️☝️ Check out the README ☝️☝️ in the repo for setup instructions. By the way, this is just the description in the bot.yml file - feel free to change it 😉
+avatar: .beepboop/avatar.png
+# To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
+config:
+  - name: AUTH_USERNAME
+    friendly_name: HTAccess Username
+    info: Htaccess Username
+    default: blah
+    type: secret
+  - name: AUTH_PASSWORD
+    friendly_name: HTAccess Pass
+    info: htacess pass
+    type: secret
+    default: blah
+  - name: CP_API_KEY
+    friendly_name: Couchpotato API Key
+    info: Couchpotato Api Key
+    type: secret
+    default: blah
