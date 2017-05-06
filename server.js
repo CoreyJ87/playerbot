@@ -22,6 +22,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
 
 slapp.message('^lights (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   if (msg.body.event.user == process.env.COREY_USERID) {
+    //cchange
     var hue = new Hue;
     hue.handleLights(msg, text, parameter);
   } else {
@@ -38,6 +39,7 @@ slapp.action('hue_callback', (msg, value) => {
   var hue = new Hue;
   hue.handleButtons(msg, value);
 })
+
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
