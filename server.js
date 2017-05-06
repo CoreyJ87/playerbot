@@ -20,11 +20,10 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
   search.handleSearch(msg, text, parameter);
 })
 
-slapp.message('^lights (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
+slapp.message('lights', ['mention', 'direct_message'], (msg, text) => {
   if (msg.body.event.user == process.env.COREY_USERID) {
-    //cchange
     var hue = new Hue;
-    hue.handleLights(msg, text, parameter);
+    hue.handleLights(msg, text);
   } else {
     msg.say("You are not Corey. So...no")
   }
