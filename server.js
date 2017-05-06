@@ -20,7 +20,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
   search.handleSearch(msg, text, parameter);
 })
 
-slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
+slapp.message('^lights (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   msg.respond(msg.body.response_url, {
     text: JSON.stringify(msg),
     "delete_original": true,
