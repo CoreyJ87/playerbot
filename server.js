@@ -5,7 +5,7 @@ const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const Search = require('./lib/search')
-
+const Hue = require('./lib/hue')
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
@@ -21,7 +21,12 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
 })
 
 slapp.message('^lights (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
-  msg.say("Response: " + JSON.stringify(msg));
+  if (msg.body.event.user == process.env.COREY_USERID) {
+    var hue = new Hue;
+    hue.handleLights(msg, text, parameter);
+  } else {
+    msg.say("You are not Corey. So...no")
+  }
 })
 
 
@@ -29,7 +34,10 @@ slapp.action('search_callback', (msg, value) => {
   var search = new Search;
   search.handleButtons(msg, value);
 })
-
+slapp.action('hue_callback', (msg, value) => {
+  var hue = new Hue;
+  hue.handleButtons(msg, value);
+})
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
