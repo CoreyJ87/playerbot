@@ -22,7 +22,7 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
 
 slapp.message('^lights (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
   msg.say(msg.body.response_url, {
-    text: "response: " + JSON.stringify(msg),
+    "text": "response: " + JSON.stringify(msg),
     "delete_original": true,
   });
 })
