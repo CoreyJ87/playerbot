@@ -33,12 +33,6 @@ slapp.action('search_callback', (msg, value) => {
   search.handleButtons(msg, value);
 })
 
-slapp.action('lights_callback', (msg, value) => {
-  msg.respond(msg.body.response_url, {
-    text: JSON.stringify(msg),
-    "delete_original": true,
-  });
-})
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
