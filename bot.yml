@@ -28,3 +28,8 @@ config:
     info: Corey's Slack ID for @synik4l
     type: secret
     default: blah
+  - name: HUE_API_KEY
+    friendly_name: Hue Api Key
+    info: hue api key
+    type: secret
+    default: blah
