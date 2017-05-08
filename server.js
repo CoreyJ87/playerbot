@@ -39,7 +39,7 @@ slapp.action('hue_callback', (msg, value) => {
   hue.handleOptionButtons(msg, value);
 })
 slapp.action('hue_group_callback', (msg, value) => {
-  hue.handleOptionButtons(msg, value);
+  hue.handleGroupButtons(msg, value);
 })
 
 
