@@ -6,6 +6,7 @@ const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const Search = require('./lib/search')
 const Hue = require('./lib/hue')
+const hue = new Hue;
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
@@ -35,8 +36,10 @@ slapp.action('search_callback', (msg, value) => {
   search.handleButtons(msg, value);
 })
 slapp.action('hue_callback', (msg, value) => {
-  var hue = new Hue;
-  hue.handleButtons(msg, value);
+  hue.handleOptionButtons(msg, value);
+})
+slapp.action('hue_group_callback', (msg, value) => {
+  hue.handleOptionButtons(msg, value);
 })
 
 
