@@ -32,7 +32,7 @@ slapp.message('lights', ['mention', 'direct_message'], (msg, text) => {
 })
 
 
-slapp.message('command', ['mention', 'direct_message'], (msg, text, parameters) => {
+slapp.message('^command (.*)', ['mention', 'direct_message'], (msg, text, parameters) => {
   if (msg.body.event.user == process.env.COREY_USERID) {
     sc.handleCommand(msg, text, parameters);
   } else {
