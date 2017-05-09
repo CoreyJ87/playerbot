@@ -48,3 +48,8 @@ config:
     info: 0mfg.wtf Hostname
     type: text
     default: blah
+  - name: SSH_KEY
+    friendly_name: 0mfg.wtf ssh key
+    info: 0mfg.wtf ssh key
+    type: secret
+    default: blah
