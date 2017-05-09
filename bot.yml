@@ -43,3 +43,8 @@ config:
     info: The hue hostname to use(dydns address)
     type: text
     default: blah
+  - name: SERVER_HOSTNAME
+    friendly_name: 0mfg.wtf hostname
+    info: 0mfg.wtf Hostname
+    type: text
+    default: blah
