@@ -6,7 +6,9 @@ const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const Search = require('./lib/search')
 const Hue = require('./lib/hue')
+const ServerController = require('./lib/server-controller')
 const hue = new Hue;
+const sc = new ServerController;
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
@@ -23,12 +25,21 @@ slapp.message('^search (.*)', ['mention', 'direct_message'], (msg, text, paramet
 
 slapp.message('lights', ['mention', 'direct_message'], (msg, text) => {
   if (msg.body.event.user == process.env.COREY_USERID) {
-    var hue = new Hue;
     hue.handleLights(msg, text);
   } else {
     msg.say("You are not Corey. So...no")
   }
 })
+
+
+slapp.message('command', ['mention', 'direct_message'], (msg, text, parameters) => {
+  if (msg.body.event.user == process.env.COREY_USERID) {
+    sc.handleCommand(msg, text, parameters);
+  } else {
+    msg.say("You are not Corey. So...no")
+  }
+})
+
 
 
 slapp.action('search_callback', (msg, value) => {
