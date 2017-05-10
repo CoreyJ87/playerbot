@@ -44,6 +44,14 @@ slapp.message('^command (.*)', ['mention', 'direct_message'], (msg, text, parame
   }
 })
 
+slapp.message('^context (.*)', ['mention', 'direct_message'], (msg, text, parameters) => {
+  if (msg.body.event.user == process.env.COREY_USERID) {
+    sc.swapServers(msg, text, parameters);
+  } else {
+    msg.say("You are not Corey. So...no")
+  }
+})
+
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
 })
