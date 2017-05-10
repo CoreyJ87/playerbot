@@ -48,8 +48,13 @@ config:
     info: 0mfg.wtf Hostname
     type: text
     default: blah
-  - name: SSH_KEY
-    friendly_name: 0mfg.wtf ssh key
-    info: 0mfg.wtf ssh key
+  - name: AWS_ACCESS_KEY_ID
+    friendly_name: AWS Access key id
+    info: Aws access key id
+    type: secret
+    default: blah
+  - name: AWS_SECRET_ACCESS_KEY
+    friendly_name: Aws secret
+    info: aws secret
     type: secret
     default: blah
