@@ -8,9 +8,10 @@ const Context = require('slapp-context-beepboop')
 const Search = require('./lib/search')
 const Hue = require('./lib/hue')
 const ServerController = require('./lib/server-controller')
+const Nest = require('./lib/nest')
 const hue = new Hue;
 const sc = new ServerController;
-
+const nest = new Nest
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
   verify_token: process.env.SLACK_VERIFY_TOKEN,
@@ -35,6 +36,9 @@ slapp.message('lights', ['mention', 'direct_message'], (msg, text) => {
   }
 })
 
+slapp.message('^nest (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
+  nest.handleCurTemp(msg, text, parameter);
+})
 
 slapp.message('^command (.*)', ['mention', 'direct_message'], (msg, text, parameters) => {
   if (msg.body.event.user == process.env.COREY_USERID) {
