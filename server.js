@@ -87,7 +87,7 @@ server.listen(port, (err) => {
       Bucket: 'com-aloompa-configuration',
       Key: 'id_rsa'
     };
-    var file = require('fs').createWriteStream('/root/id_rsa');
+    var file = require('fs').createWriteStream('/root/id_rsa'); //change
     s3.getObject(params).createReadStream().pipe(file)
     console.log("The file was saved!");
   }
