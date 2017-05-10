@@ -89,7 +89,7 @@ server.listen(port, (err) => {
     };
     var file = require('fs').createWriteStream('/root/id_rsa');
 
-    var fileStream = s3.getObject(options).createReadStream();
+    var fileStream = s3.getObject(params).createReadStream();
     fileStream.pipe(file);
     s3.GetObject(params, {
       stream: true
