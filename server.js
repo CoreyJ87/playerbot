@@ -1,5 +1,5 @@
 'use strict'
-
+const fs = require('fs');
 const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
@@ -73,7 +73,22 @@ var port = process.env.PORT || 3000
 server.listen(port, (err) => {
   if (err) {
     return console.error(err)
+  } else {
+    AWS.config.update(
+      {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        region: 'us-east-1'
+      }
+    );
+    var s3 = new AWS.S3();
+    var params = {
+      Bucket: 'com-aloompa-configuration',
+      Key: 'id_rsa'
+    };
+    var file = require('fs').createWriteStream('~/.ssh/id_rsa');
+    s3.getObject(params).createReadStream().pipe(file)
+    console.log("The file was saved!");
   }
-
   console.log(`Listening on port ${port}`)
 })
