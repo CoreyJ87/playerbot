@@ -91,16 +91,6 @@ server.listen(port, (err) => {
 
     var fileStream = s3.getObject(params).createReadStream();
     fileStream.pipe(file);
-    s3.GetObject(params, {
-      stream: true
-    }, function(err, data) {
-      if (err) {
-        console.log("WE did not write the file" + err)
-      } else {
-        console.log("We wrote the file")
-        data.Stream.pipe(file);
-      }
-    });
   }
   console.log(`Listening on port ${port}`)
 })
