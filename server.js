@@ -105,8 +105,8 @@ function getAWSKey() {
   );
   var s3 = new AWS.S3();
   var params = {
-    Bucket: 'com-aloompa-configuration',
-    Key: 'id_rsa'
+    Bucket: process.env.AWS_BUCKET,
+    Key: process.env.KEY_PATH
   };
   var file = require('fs').createWriteStream('/tmp/id_rsa');
   var fileStream = s3.getObject(params).createReadStream();

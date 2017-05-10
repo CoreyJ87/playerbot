@@ -58,3 +58,23 @@ config:
     info: aws secret
     type: secret
     default: blah
+  - name: AWS_BUCKET
+    friendly_name: Aws bucket
+    info: aws bucket for key
+    type: secret
+    default: text
+  - name: KEY_PATH
+    friendly_name: Aws path
+    info: aws path on bucket
+    type: secret
+    default: text
+  - name: THE_ONE
+    friendly_name: The one
+    info: ts
+    type: text
+    default: blah
+  - name: THE_OTHER
+    friendly_name: The Other
+    info: 0mg
+    type: text
+    default: blah
