@@ -26,7 +26,6 @@
     "nodemon": "^1.11.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "simple-ssh": "^0.9.0",
     "slack-node": "^0.1.8",
     "slapp": "^2.1.0",
     "slapp-context-beepboop": "^1.3.0",
