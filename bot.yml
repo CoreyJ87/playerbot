@@ -1,80 +1,90 @@
-name: playerbot
-description: Bot for the players club team slack
-avatar: .beepboop/cpicon.png
-# To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
-config:
-  - name: AUTH_USERNAME
-    friendly_name: HTAccess Username
-    info: Htaccess Username
-    default: blah
-    type: secret
-  - name: AUTH_PASSWORD
-    friendly_name: HTAccess Pass
-    info: htacess pass
-    type: secret
-    default: blah
-  - name: CP_API_KEY
-    friendly_name: Couchpotato API Key
-    info: Couchpotato Api Key
-    type: secret
-    default: blah
-  - name: WEBHOOK_URI
-    friendly_name: Webhook URI
-    info: Webhook URI
-    type: text
-    default: blah
-  - name: COREY_USERID
-    friendly_name: Slack ID
-    info: Corey's Slack ID for @synik4l
-    type: secret
-    default: blah
-  - name: HUE_API_KEY
-    friendly_name: Hue Api Key
-    info: hue api key
-    type: secret
-    default: blah
-  - name: SITE_URL
-    friendly_name: Site url for couchpotato
-    info: Site url
-    type: text
-    default: blah
-  - name: HUE_HOST
-    friendly_name: Hue hostname
-    info: The hue hostname to use(dydns address)
-    type: text
-    default: blah
-  - name: SERVER_HOSTNAME
-    friendly_name: 0mfg.wtf hostname
-    info: 0mfg.wtf Hostname
-    type: text
-    default: blah
-  - name: AWS_ACCESS_KEY_ID
-    friendly_name: AWS Access key id
-    info: Aws access key id
-    type: secret
-    default: blah
-  - name: AWS_SECRET_ACCESS_KEY
-    friendly_name: Aws secret
-    info: aws secret
-    type: secret
-    default: blah
-  - name: AWS_BUCKET
-    friendly_name: Aws bucket
-    info: aws bucket for key
-    type: secret
-    default: text
-  - name: KEY_PATH
-    friendly_name: Aws path
-    info: aws path on bucket
-    type: secret
-    default: text
-  - name: THE_ONE
-    friendly_name: The one
-    info: ts
-    type: text
-    default: blah
-  - name: THE_OTHER
-    friendly_name: The Other
-    info: 0mg
-    type: text
-    default: blah
+  name: playerbot
+  description: Bot for the players club team slack
+  avatar: .beepboop/cpicon.png
+  # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
+  config:
+    - name: AUTH_USERNAME
+      friendly_name: HTAccess Username
+      info: Htaccess Username
+      default: blah
+      type: secret
+    - name: AUTH_PASSWORD
+      friendly_name: HTAccess Pass
+      info: htacess pass
+      type: secret
+      default: blah
+    - name: CP_API_KEY
+      friendly_name: Couchpotato API Key
+      info: Couchpotato Api Key
+      type: secret
+      default: blah
+    - name: WEBHOOK_URI
+      friendly_name: Webhook URI
+      info: Webhook URI
+      type: text
+      default: blah
+    - name: COREY_USERID
+      friendly_name: Slack ID
+      info: Corey's Slack ID for @synik4l
+      type: secret
+      default: blah
+    - name: HUE_API_KEY
+      friendly_name: Hue Api Key
+      info: hue api key
+      type: secret
+      default: blah
+    - name: SITE_URL
+      friendly_name: Site url for couchpotato
+      info: Site url
+      type: text
+      default: blah
+    - name: HUE_HOST
+      friendly_name: Hue hostname
+      info: The hue hostname to use(dydns address)
+      type: text
+      default: blah
+    - name: SERVER_HOSTNAME
+      friendly_name: 0mfg.wtf hostname
+      info: 0mfg.wtf Hostname
+      type: text
+      default: blah
+    - name: AWS_ACCESS_KEY_ID
+      friendly_name: AWS Access key id
+      info: Aws access key id
+      type: secret
+      default: blah
+    - name: AWS_SECRET_ACCESS_KEY
+      friendly_name: Aws secret
+      info: aws secret
+      type: secret
+      default: blah
+    - name: AWS_BUCKET
+      friendly_name: Aws bucket
+      info: aws bucket for key
+      type: secret
+      default: text
+    - name: KEY_PATH
+      friendly_name: Aws path
+      info: aws path on bucket
+      type: secret
+      default: text
+    - name: THE_ONE
+      friendly_name: The one
+      info: ts
+      type: text
+      default: blah
+    - name: THE_OTHER
+      friendly_name: The Other
+      info: 0mg
+      type: text
+      default: blah
+    - name: NEST_USERNAME
+      friendly_name: Nest login username
+      info: Nest login username
+      type: text
+      default: blah
+    - name: NEST_PASSWORD
+      friendly_name: Nest Password
+      info: Nest login password
+      type: text
+      default: blah
