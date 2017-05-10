@@ -94,7 +94,7 @@ server.listen(port, (err) => {
       stream: true
     }, function(err, data) {
       if (err) {
-        console.log(err)
+        console.log("WE did not write the file" + err)
       } else {
         console.log("We wrote the file")
         data.Stream.pipe(file);
