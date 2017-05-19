@@ -37,7 +37,12 @@ slapp.message('lights', ['mention', 'direct_message'], (msg, text) => {
 })
 
 slapp.message('^nest (.*)', ['mention', 'direct_message'], (msg, text, parameter) => {
-  nest.handleCurTemp(msg, text, parameter);
+  if (msg.body.event.user == process.env.COREY_USERID) {
+    nest.handleCurTemp(msg, text, parameter);
+  } else {
+    msg.say("You are not Corey. So...no")
+  }
+
 })
 
 slapp.message('^command (.*)', ['mention', 'direct_message'], (msg, text, parameters) => {
@@ -57,7 +62,7 @@ slapp.message('^context (.*)', ['mention', 'direct_message'], (msg, text, parame
 })
 
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say("To search for a movie use: `@couchbot search MOVIENAME`\n");
+  msg.say("To search for a movie use: `@slappbot search MOVIENAME`\n");
 })
 
 // Catch-all for any other responses not handled above
